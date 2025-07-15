@@ -1,9 +1,8 @@
 package com.ecommerce.ecomapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,29 +11,20 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int quantity;
+    private BigDecimal price;
+
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
-    private Integer quantity;
-
-    private BigDecimal unitPrice;
-
-    private BigDecimal subtotal;
-
-    @PrePersist
-    @PreUpdate
-    public void calculateSubtotal() {
-        if (unitPrice != null && quantity != null) {
-            this.subtotal = unitPrice.multiply(BigDecimal.valueOf(quantity));
-        }
-    }
 }

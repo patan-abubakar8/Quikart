@@ -4,7 +4,7 @@ import com.ecommerce.ecomapi.entity.User;
 import com.ecommerce.ecomapi.exceptions.AlreadyExistsException;
 import com.ecommerce.ecomapi.exceptions.ResourceNotFoundException;
 import com.ecommerce.ecomapi.response.ApiResponse;
-import com.ecommerce.ecomapi.service.User.IUserService;
+import com.ecommerce.ecomapi.service.user.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

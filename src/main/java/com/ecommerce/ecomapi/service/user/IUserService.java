@@ -1,4 +1,4 @@
-package com.ecommerce.ecomapi.service.User;
+package com.ecommerce.ecomapi.service.user;
 
 import com.ecommerce.ecomapi.entity.User;
 

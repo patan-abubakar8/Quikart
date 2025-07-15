@@ -1,22 +1,36 @@
 package com.ecommerce.ecomapi.service.product;
 
+import com.ecommerce.ecomapi.entity.Category;
 import com.ecommerce.ecomapi.entity.Product;
+import com.ecommerce.ecomapi.exceptions.AlreadyExistsException;
+import com.ecommerce.ecomapi.exceptions.ResourceNotFoundException;
+import com.ecommerce.ecomapi.repository.CategoryRepository;
 import com.ecommerce.ecomapi.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
+import java.rmi.AlreadyBoundException;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService implements IProductService{
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
     @Override
     public Product addProduct(Product product) {
-        if(productRepository.existsByName(product.getName())) {
-            throw new IllegalArgumentException("Product with name " + product.getName() + " already exists.");
+        if (productRepository.existsByName(product.getName())) {
+            throw new AlreadyExistsException("Product with name " + product.getName() + " already exists.");
         }
+
+        // Fetch full category using ID
+        Long categoryId = product.getCategory().getId();
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with ID: " + categoryId));
+
+        product.setCategory(category);
+
         return productRepository.save(product);
     }
 
@@ -38,6 +52,7 @@ public class ProductService implements IProductService{
         existedProduct.setDescription(product.getDescription());
         existedProduct.setPrice(product.getPrice());
         existedProduct.setCategory(product.getCategory());
+        existedProduct.setStockQuantity(product.getStockQuantity());
         return productRepository.save(existedProduct);
     }
 

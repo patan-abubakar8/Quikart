@@ -1,5 +1,6 @@
 package com.ecommerce.ecomapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +25,7 @@ public class CartItem {
     private BigDecimal totalPrice;
 
     @ManyToOne
+    @JoinColumn(name = "cart_id")
+    @JsonIgnore
     private Cart cart;
 }
