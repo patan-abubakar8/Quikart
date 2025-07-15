@@ -1,6 +1,6 @@
 package com.ecommerce.ecomapi.enums;
 
-public enum UserRole {
+public enum Role {
     CUSTOMER,
     ADMIN
 }

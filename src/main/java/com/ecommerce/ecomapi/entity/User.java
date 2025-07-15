@@ -1,5 +1,6 @@
 package com.ecommerce.ecomapi.entity;
 
+import com.ecommerce.ecomapi.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,9 @@ public class User {
     private Long id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(unique = true)
     private String email;
