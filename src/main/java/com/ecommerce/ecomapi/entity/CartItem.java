@@ -17,24 +17,12 @@ public class CartItem {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
     private Product product;
 
-    private Integer quantity;
+    private int quantity;
 
-    private BigDecimal unitPrice;
+    private BigDecimal totalPrice;
 
-    private BigDecimal subtotal;
-
-    @PrePersist
-    @PreUpdate
-    public void calculateSubtotal() {
-        if (unitPrice != null && quantity != null) {
-            this.subtotal = unitPrice.multiply(BigDecimal.valueOf(quantity));
-        }
-    }
+    @ManyToOne
+    private Cart cart;
 }
