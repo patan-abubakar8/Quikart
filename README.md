@@ -141,3 +141,11 @@ Runs at: http://127.0.0.1:5501 or 5051 depending on Live Server port
 - The project uses custom ApiResponse<T> wrappers for consistency.
 - Pagination uses Spring Pageable support.
 - Product-category linkage handled via @ManyToOne.
+
+### Admin Panel Access 
+---
+
+- register user using PostMan ,in which set role as "ADMIN" from the enum(Role) provided
+- now open the Login page enter credentials of Admin ,you will be directed to Admin Panel
+- add products ,add categories for now (remaining frontend will do in next commit like delete ,update)
+
