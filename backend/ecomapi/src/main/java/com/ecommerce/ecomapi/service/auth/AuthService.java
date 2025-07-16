@@ -40,7 +40,7 @@ public class AuthService implements IAuthService {
         String accessToken = jwtUtil.generateAccessToken(user.getEmail());
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
-        return new AuthResponse(accessToken, refreshToken, user.getEmail(), user.getRole().name());
+        return new AuthResponse(accessToken, refreshToken, user.getEmail(), user.getRole().name(),user.getId());
     }
 
     // LOGIN
@@ -55,6 +55,6 @@ public class AuthService implements IAuthService {
         String accessToken = jwtUtil.generateAccessToken(user.getEmail());
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
-        return new AuthResponse(accessToken, refreshToken, user.getEmail(), user.getRole().name());
+        return new AuthResponse(accessToken, refreshToken, user.getEmail(), user.getRole().name(),user.getId());
     }
 }
