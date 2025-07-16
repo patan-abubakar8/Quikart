@@ -54,7 +54,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
 
                         // Public product view
-                        .requestMatchers("/api/products/all", "/api/products/{id}", "/api/products/search", "/api/products/category/**").permitAll()
+                        .requestMatchers("/api/products/all", "/api/products/{id}", "/api/products/search","/api/products/page","/api/products/search/**", "/api/products/category/**").permitAll()
 
                         // Admin-only: Manage products/categories
                         .requestMatchers("/api/products/**").hasRole("ADMIN")

@@ -6,6 +6,7 @@ import com.ecommerce.ecomapi.exceptions.ResourceNotFoundException;
 import com.ecommerce.ecomapi.response.ApiResponse;
 import com.ecommerce.ecomapi.service.product.IProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,4 +65,22 @@ public class ProductController {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse<>(e.getMessage(), null));
         }
     }
+
+    @GetMapping("/page")
+    public ResponseEntity<ApiResponse<Page<Product>>> getAllProductsPage(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Page<Product> products = productService.getAllProductsPage(page, size);
+        return ResponseEntity.ok(new ApiResponse<>("Products fetched", products));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<ApiResponse<List<Product>>> searchProducts(
+            @RequestParam String name
+    ) {
+        List<Product> result = productService.searchProductsByName(name);
+        return ResponseEntity.ok(new ApiResponse<>("Search result", result));
+    }
+
 }

@@ -7,6 +7,9 @@ import com.ecommerce.ecomapi.exceptions.ResourceNotFoundException;
 import com.ecommerce.ecomapi.repository.CategoryRepository;
 import com.ecommerce.ecomapi.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 
@@ -60,5 +63,16 @@ public class ProductService implements IProductService{
     public void deleteProduct(Long id) {
         Product existedProduct =getProductById(id);
         productRepository.delete(existedProduct);
+    }
+
+    @Override
+    public Page<Product> getAllProductsPage(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+        return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Product> searchProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
     }
 }
