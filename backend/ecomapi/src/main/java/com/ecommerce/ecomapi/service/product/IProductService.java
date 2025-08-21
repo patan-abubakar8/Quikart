@@ -3,6 +3,7 @@ package com.ecommerce.ecomapi.service.product;
 import com.ecommerce.ecomapi.entity.Product;
 import org.springframework.data.domain.Page;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface IProductService {
@@ -13,4 +14,13 @@ public interface IProductService {
     void deleteProduct(Long id);
     Page<Product> getAllProductsPage(int pageNo, int pageSize);
     List<Product> searchProductsByName(String name);
+    
+    // New methods for enhanced functionality
+    List<Product> getProductsByCategory(Long categoryId);
+    List<Product> getProductsByBrand(String brand);
+    List<Product> getProductsByPriceRange(BigDecimal minPrice, BigDecimal maxPrice);
+    List<Product> getActiveProducts();
+    Product getProductBySku(String sku);
+    List<Product> filterProducts(String name, String brand, Long categoryId, 
+                               BigDecimal minPrice, BigDecimal maxPrice, Boolean isActive);
 }

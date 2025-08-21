@@ -1,151 +1,499 @@
-# 🛒 Simple E-Commerce App
+# 🛒 EcomStore - Complete E-commerce Application
 
-A **full-stack e-commerce web application** built using **Spring Boot** (Java backend) and **HTML/CSS/JavaScript** (frontend). This project supports authentication, cart, order management, and admin dashboard.
+A full-stack e-commerce application built with **Spring Boot** backend and **React + Vite** frontend, featuring role-based authentication, product management, shopping cart, order processing, and payment integration.
 
----
+## 🌟 Features Overview
 
-## 🚀 Technologies Used
+### 👤 **User Management**
+- **Role-based Authentication** (Customer & Admin)
+- **JWT Token-based Security**
+- **Registration & Login** with validation
+- **Automatic Role-based Redirects**
 
-### 🧩 Backend
-- **Spring Boot 3**
-- **Spring Security + JWT (Access + Refresh Tokens)**
-- **Hibernate / JPA**
-- **MySQL Database**
-- **Maven**
+### 🛍️ **Customer Features**
+- **Product Catalog** with search, filters, and pagination
+- **Shopping Cart** with quantity management
+- **Checkout Process** with Indian address format
+- **Order Management** with PDF downloads
+- **Razorpay Payment Integration** (Ready)
 
-### 🎨 Frontend
-- **HTML5, CSS3, JavaScript (Vanilla)**
-- **Bootstrap 5**
-- **VS Code Live Server**
+### 👨‍💼 **Admin Features**
+- **Admin Dashboard** with analytics and alerts
+- **Product Management** (CRUD operations)
+- **Image Upload & Management** (Multiple images per product)
+- **Category Management**
+- **Inventory Monitoring** with low stock alerts
+- **Order Management**
 
----
+### 🇮🇳 **India-Specific Features**
+- **INR Currency** formatting
+- **Indian Address Format** (PIN codes, states)
+- **18% GST** calculation
+- **Indian States & Cities** dropdown
+- **Mobile Number** validation
+- **Popular Indian Brands** in filters
 
-## 🗂️ Project Structure
+## 🏗️ Architecture
+
+### **Backend (Spring Boot)**
 ```
-Simple-Ecommerce-App/
-├── backend/
-│   └── ecomapi/
-│       ├── controller/
-│       ├── entity/
-│       ├── service/
-│       ├── dto/
-│       ├── repository/
-│       ├── exceptions/
-│       ├── security/
-│       ├── utils/
-│       └── response/
-├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── register.html
-│   ├── cart.html
-│   ├── admin.html
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       ├── auth.js
-│       ├── index.js
-│       ├── cart.js
-│       ├── admin.js
-│       └── utils.js
-
-```
-
----
-
-## 🔐 Authentication & Authorization
-
-- **JWT-based login system** with role-based access control
-- Supports **Access Token (15 min)** and **Refresh Token (2 days)**
-- Tokens stored in **localStorage**
-- Spring Security handles API protection
-
----
-
-## 👨‍💼 User Roles
-
-| Role     | Features                                           |
-|----------|----------------------------------------------------|
-| `CUSTOMER` | View, Search, Add to Cart, Place Orders            |
-| `ADMIN`    | Add Categories, Add Products (via admin panel)     |
-
----
-
-## 🧑‍💻 Features
-
-### ✅ Public
-- User Registration & Login
-- Responsive UI with Bootstrap
-
-### ✅ Authenticated Users
-- Product Search and Pagination
-- Add to Cart / Remove / Clear
-- Place Order with real-time calculation
-
-### ✅ Admin
-- Add New Categories
-- Add New Products (with category link)
-- Access to protected admin dashboard
-
----
-
-## 📬 API Endpoints (Sample)
-
-| Method | Endpoint                          | Description             | Access     |
-|--------|-----------------------------------|-------------------------|------------|
-| POST   | `/auth/register`                  | Register a new user     | Public     |
-| POST   | `/auth/login`                     | Login with JWT          | Public     |
-| GET    | `/api/products?page=0&size=6`     | Get paginated products  | Authenticated |
-| GET    | `/api/products/search?name=abc`   | Search products         | Authenticated |
-| POST   | `/api/products/add`               | Add new product         | Admin      |
-| POST   | `/api/categories/add`             | Add new category        | Admin      |
-| GET    | `/api/categories/all`             | Get all categories      | Admin      |
-| POST   | `/api/cart/{userId}/add-to-cart/{productId}?quantity=1` | Add to cart | Customer    |
-| DELETE | `/api/cart/{userId}/clear-cart`   | Clear user's cart       | Customer    |
-| POST   | `/api/orders/place/{userId}`      | Place an order          | Customer    |
-
----
-
-## 🛠️ Running Locally
-
-### ▶️ Backend (Spring Boot)
-
-```
-cd backend/ecomapi
-./mvnw spring-boot:run
-```
-Runs at: http://localhost:8080
-
-### 🌐 Frontend (HTML/JS)
-
-```
-cd frontend
+backend/ecomapi/
+├── src/main/java/com/ecommerce/ecomapi/
+│   ├── controller/          # REST API endpoints
+│   ├── service/            # Business logic layer
+│   ├── repository/         # Data access layer
+│   ├── entity/            # JPA entities
+│   ├── dto/               # Data transfer objects
+│   ├── security/          # JWT & authentication
+│   ├── config/            # Configuration classes
+│   ├── exceptions/        # Custom exceptions
+│   └── utils/             # Utility classes
+└── src/main/resources/
+    └── application.properties
 ```
 
-Runs at: http://127.0.0.1:5501 or 5051 depending on Live Server port
+### **Frontend (React + Vite)**
+```
+frontend/
+├── src/
+│   ├── components/        # Reusable UI components
+│   ├── pages/            # Page components
+│   ├── services/         # API service layer
+│   ├── context/          # React Context (Auth, Cart)
+│   ├── hooks/            # Custom React hooks
+│   ├── utils/            # Utility functions
+│   └── styles/           # CSS and styling
+├── public/               # Static assets
+└── package.json
+```
 
---- 
+## 🚀 Technology Stack
 
-### 📦 Environment Setup
+### **Backend Technologies**
+- **Java 21** - Programming language
+- **Spring Boot 3.5.3** - Framework
+- **Spring Security** - Authentication & authorization
+- **Spring Data JPA** - Database operations
+- **MySQL** - Database
+- **JWT (JJWT)** - Token-based authentication
+- **iText7** - PDF generation
+- **Lombok** - Code generation
+- **Maven** - Build tool
+
+### **Frontend Technologies**
+- **React 18** - UI library
+- **Vite** - Build tool & dev server
+- **Tailwind CSS** - Styling framework
+- **React Router** - Client-side routing
+- **React Query** - Server state management
+- **React Hook Form** - Form handling
+- **Axios** - HTTP client
+- **Lucide React** - Icons
+- **React Hot Toast** - Notifications
+
+## 📊 Database Schema
+
+### **Core Entities**
+
+#### **Users Table**
+```sql
+- id (Primary Key)
+- name
+- email (Unique)
+- password (Encrypted)
+- role (CUSTOMER/ADMIN)
+```
+
+#### **Products Table**
+```sql
+- id (Primary Key)
+- name
+- description
+- price
+- stock_quantity
+- brand
+- model
+- sku
+- specifications
+- weight
+- dimensions
+- is_active
+- created_at
+- updated_at
+- category_id (Foreign Key)
+```
+
+#### **Product Images Table**
+```sql
+- id (Primary Key)
+- product_id (Foreign Key)
+- file_name
+- original_file_name
+- image_url
+- is_primary
+- display_order
+- file_size
+- content_type
+- uploaded_at
+```
+
+#### **Categories Table**
+```sql
+- id (Primary Key)
+- name
+```
+
+#### **Cart & Cart Items**
+```sql
+Cart:
+- id (Primary Key)
+- user_id (Foreign Key)
+- total_amount
+
+Cart Items:
+- id (Primary Key)
+- cart_id (Foreign Key)
+- product_id (Foreign Key)
+- quantity
+- total_price
+```
+
+#### **Orders & Order Items**
+```sql
+Orders:
+- id (Primary Key)
+- user_id (Foreign Key)
+- total_amount
+- order_status
+- ordered_at
+
+Order Items:
+- id (Primary Key)
+- order_id (Foreign Key)
+- product_id (Foreign Key)
+- quantity
+- price
+```
+
+## 🔐 API Endpoints
+
+### **Authentication Endpoints**
+```
+POST /auth/register          # User registration
+POST /auth/login            # User login
+```
+
+### **Product Endpoints**
+```
+GET    /api/products/all                    # Get all products
+GET    /api/products/page                   # Paginated products
+GET    /api/products/product/{id}           # Get product by ID
+GET    /api/products/search                 # Search products
+GET    /api/products/category/{categoryId}  # Products by category
+GET    /api/products/filter                 # Filter products
+POST   /api/products/add                    # Add product (Admin)
+PUT    /api/products/product/{id}/update    # Update product (Admin)
+DELETE /api/products/product/{id}/delete    # Delete product (Admin)
+```
+
+### **Image Management Endpoints**
+```
+POST   /api/images/products/{id}/upload           # Upload single image
+POST   /api/images/products/{id}/upload-multiple  # Upload multiple images
+GET    /api/images/products/{id}                  # Get product images
+GET    /api/images/products/{id}/primary          # Get primary image
+GET    /api/images/products/{id}/{fileName}       # Serve image file
+DELETE /api/images/{imageId}                      # Delete image
+PUT    /api/images/products/{id}/primary/{imageId} # Set primary image
+```
+
+### **Cart Endpoints**
+```
+GET    /api/cart/cart-details/{userId}           # Get user cart
+POST   /api/cart/{userId}/add-to-cart/{productId} # Add to cart
+DELETE /api/cart/remove-item/{itemId}            # Remove cart item
+DELETE /api/cart/{userId}/clear-cart             # Clear cart
+```
+
+### **Order Endpoints**
+```
+POST /api/orders/place-order              # Place order
+GET  /api/orders/order/{orderId}          # Get order details
+GET  /api/orders/user/{userId}/orders     # Get user orders
+GET  /api/orders/{orderId}/download-pdf   # Download order PDF
+GET  /api/orders/{orderId}/download-invoice # Download invoice PDF
+```
+
+### **Category Endpoints**
+```
+GET    /api/categories/all                    # Get all categories
+POST   /api/categories/add                    # Add category (Admin)
+GET    /api/categories/category/{id}/category # Get category by ID
+DELETE /api/categories/category/{id}/delete   # Delete category (Admin)
+```
+
+## 🎨 Frontend Features
+
+### **Customer Interface**
+
+#### **Product Catalog**
+- **Search & Filters** - Name, brand, category, price range
+- **Pagination** - Efficient product browsing
+- **Product Cards** - Amazon-style with images and CTAs
+- **Responsive Grid** - 1-4 columns based on screen size
+
+#### **Shopping Cart**
+- **Cart Drawer** - Quick view from header
+- **Full Cart Page** - Detailed cart management
+- **Quantity Controls** - Increase/decrease with validation
+- **Price Calculation** - Subtotal, GST, shipping, total
+- **Stock Validation** - Prevent overselling
+
+#### **Checkout Process**
+- **Indian Address Form** - PIN codes, states, mobile validation
+- **Order Summary** - Item details and pricing breakdown
+- **Payment Methods** - Razorpay and Cash on Delivery
+- **Order Confirmation** - Success page with download options
+
+### **Admin Interface**
+
+#### **Dashboard**
+- **Analytics Cards** - Products, categories, inventory value
+- **Low Stock Alerts** - Real-time notifications (≤10 units)
+- **Quick Actions** - Add product, manage categories
+- **Recent Activity** - Latest products and updates
+
+#### **Product Management**
+- **Product List** - Searchable table with filters
+- **Add Product** - Comprehensive form with image upload
+- **Edit Product** - Update all product attributes
+- **View Product** - Detailed product information
+- **Image Management** - Upload, delete, set primary images
+- **Stock Monitoring** - Visual stock status indicators
+
+#### **Category Management**
+- **Category List** - All categories with management options
+- **Add/Edit Categories** - Modal-based operations
+- **Search Categories** - Quick category lookup
+
+#### **Notifications**
+- **Stock Alerts** - Critical (≤5), Warning (6-10), Low (≤10)
+- **Filter Notifications** - View by severity level
+- **Quick Actions** - Direct links to update stock
+
+## 🛠️ Setup & Installation
+
+### **Prerequisites**
+- **Java 21+**
+- **Node.js 18+**
+- **MySQL 8.0+**
+- **Maven 3.6+**
+
+### **Backend Setup**
+
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd Simple-Ecommerce-APP/backend/ecomapi
+```
+
+2. **Configure Database**
+```properties
+# application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/ecomdb
+spring.datasource.username=root
+spring.datasource.password=root
+```
+
+3. **Run the application**
+```bash
+mvn spring-boot:run
+```
+
+Backend will start on `http://localhost:8080`
+
+### **Frontend Setup**
+
+1. **Navigate to frontend directory**
+```bash
+cd ../../frontend
+```
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Start development server**
+```bash
+npm run dev
+```
+
+Frontend will start on `http://localhost:5173`
+
+## 🔧 Configuration
+
+### **Backend Configuration**
+
+#### **Database Configuration**
+```properties
+# MySQL Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/ecomdb
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+#### **File Upload Configuration**
+```properties
+# File Upload
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=25MB
+app.file.upload-dir=uploads
+app.base-url=http://localhost:8080
+```
+
+#### **CORS Configuration**
+```java
+// Configured for Vite development server
+allowedOrigins: http://localhost:5173, http://127.0.0.1:5173
+```
+
+### **Frontend Configuration**
+
+#### **API Base URL**
+```javascript
+// services/api.js
+baseURL: 'http://localhost:8080'
+```
+
+#### **Vite Configuration**
+```javascript
+// vite.config.js
+server: {
+  port: 5173,
+  host: true,
+  cors: true
+}
+```
+
+## 🎯 User Flows
+
+### **Customer Journey**
+1. **Registration/Login** → Role-based redirect
+2. **Browse Products** → Search, filter, paginate
+3. **Product Details** → View images, specifications
+4. **Add to Cart** → Quantity selection, stock validation
+5. **Cart Management** → Update quantities, remove items
+6. **Checkout** → Indian address form, payment method
+7. **Order Confirmation** → PDF download, order tracking
+
+### **Admin Journey**
+1. **Admin Login** → Dashboard with analytics
+2. **Product Management** → Add, edit, view, delete products
+3. **Image Management** → Upload, organize product images
+4. **Inventory Monitoring** → Stock alerts and notifications
+5. **Category Management** → Organize product categories
+6. **Order Management** → View and process customer orders
+
+## 📱 Responsive Design
+
+### **Mobile-First Approach**
+- **Responsive Grid** - Adapts to screen size
+- **Touch-Friendly** - Large buttons and easy navigation
+- **Mobile Navigation** - Collapsible sidebar and menus
+- **Optimized Images** - Proper sizing and loading
+
+### **Breakpoints**
+- **Mobile**: < 640px (1 column)
+- **Tablet**: 640px - 1024px (2-3 columns)
+- **Desktop**: > 1024px (4 columns)
+
+## 🔒 Security Features
+
+### **Authentication & Authorization**
+- **JWT Tokens** - Secure token-based authentication
+- **Role-based Access** - Customer vs Admin permissions
+- **Protected Routes** - Frontend route protection
+- **Password Encryption** - BCrypt hashing
+- **CORS Configuration** - Cross-origin request handling
+
+### **Data Validation**
+- **Frontend Validation** - React Hook Form validation
+- **Backend Validation** - Spring Boot validation annotations
+- **File Upload Security** - Type and size validation
+- **SQL Injection Prevention** - JPA parameterized queries
+
+## 🚀 Deployment
+
+### **Backend Deployment**
+```bash
+# Build JAR file
+mvn clean package
+
+# Run production
+java -jar target/ecomapi-0.0.1-SNAPSHOT.jar
+```
+
+### **Frontend Deployment**
+```bash
+# Build for production
+npm run build
+
+# Serve static files
+npm run preview
+```
+
+## 🔮 Future Enhancements
+
+### **Planned Features**
+- **Product Reviews & Ratings**
+- **Wishlist Functionality**
+- **Advanced Analytics Dashboard**
+- **Email Notifications**
+- **Product Variants** (Size, Color)
+- **Inventory Tracking** (Purchase orders)
+- **Bulk Operations** (Import/Export)
+- **Multi-language Support**
+- **Real-time Chat Support**
+- **Advanced Search** (Elasticsearch)
+
+### **Payment Integration**
+- **Razorpay Integration** - Complete payment flow
+- **Payment Status Tracking**
+- **Refund Management**
+- **Payment Analytics**
+
+### **Performance Optimizations**
+- **Image Optimization** - WebP format, lazy loading
+- **Caching Strategy** - Redis integration
+- **Database Optimization** - Indexing, query optimization
+- **CDN Integration** - Static asset delivery
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+- **Backend Development** - Spring Boot, MySQL, Security
+- **Frontend Development** - React, Tailwind CSS, State Management
+- **UI/UX Design** - Responsive design, User experience
+- **DevOps** - Deployment, Configuration, Optimization
+
+## 📞 Support
+
+For support, email [support@ecomstore.com](mailto:support@ecomstore.com) or join our Slack channel.
+
 ---
 
-- Java 21 installed
-- MySQL running (default config in application.properties)
-- Change Username and Password (in application.properties)
-- CORS is enabled for frontend communication
-- Use Postman or built-in UI for API testing
-
-### 📌 Notes
----
-
-- The project uses custom ApiResponse<T> wrappers for consistency.
-- Pagination uses Spring Pageable support.
-- Product-category linkage handled via @ManyToOne.
-
-### Admin Panel Access 
----
-
-- register user using PostMan ,in which set role as "ADMIN" from the enum(Role) provided
-- now open the Login page enter credentials of Admin ,you will be directed to Admin Panel
-- add products ,add categories for now (remaining frontend will do in next commit like delete ,update)
-
+**Built with ❤️ using Spring Boot & React**
