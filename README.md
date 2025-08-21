@@ -1,6 +1,57 @@
-# 🛒 EcomStore - Complete E-commerce Application
+# 🛒 EcomStore - Full-Stack E-commerce Application
 
-A full-stack e-commerce application built with **Spring Boot** backend and **React + Vite** frontend, featuring role-based authentication, product management, shopping cart, order processing, and payment integration.
+A robust e-commerce platform with a **Spring Boot** backend and **React + Vite** frontend. Features include role-based authentication, product management, shopping cart, order processing, payment integration, and India-specific enhancements.
+
+---
+
+## 🌟 Features
+
+- **Role-based Authentication** (Customer & Admin)
+- **JWT Security** for API protection
+- **Product Catalog** with search, filters, and pagination
+- **Shopping Cart** with quantity and stock management
+- **Checkout** with Indian address format and Razorpay integration
+- **Order Management** with PDF invoice/download
+- **Admin Dashboard** with analytics, product/category management, and inventory alerts
+- **Image Upload** (multiple images per product)
+- **18% GST Calculation** and INR currency formatting
+- **Mobile-first Responsive UI**
+
+---
+
+## 🏗️ Project Structure
+
+### Backend (`backend/ecomapi/`)
+- `controller/` - REST API endpoints
+- `service/` - Business logic
+- `repository/` - Data access
+- `entity/` - JPA entities
+- `dto/` - Data transfer objects
+- `security/` - JWT & authentication
+- `config/` - Configuration
+- `exceptions/` - Custom exceptions
+- `utils/` - Utility classes
+
+### Frontend (`frontend/`)
+- `components/` - Reusable UI
+- `pages/` - Page components
+- `services/` - API layer
+- `context/` - React Context (Auth, Cart)
+- `hooks/` - Custom hooks
+- `utils/` - Utility functions
+- `styles/` - CSS/styling
+
+---
+
+## 🚀 Technology Stack
+
+**Backend:**  
+Java 21, Spring Boot 3.5.3, Spring Security, Spring Data JPA, MySQL, JWT (JJWT), iText7, Lombok, Maven
+
+**Frontend:**  
+React 18, Vite, Tailwind CSS, React Router, React Query, React Hook Form, Axios, Lucide React, React Hot Toast
+
+
 
 ## 🌟 Features Overview
 
@@ -32,6 +83,7 @@ A full-stack e-commerce application built with **Spring Boot** backend and **Rea
 - **Indian States & Cities** dropdown
 - **Mobile Number** validation
 - **Popular Indian Brands** in filters
+
 
 ## 🏗️ Architecture
 
@@ -67,29 +119,7 @@ frontend/
 └── package.json
 ```
 
-## 🚀 Technology Stack
 
-### **Backend Technologies**
-- **Java 21** - Programming language
-- **Spring Boot 3.5.3** - Framework
-- **Spring Security** - Authentication & authorization
-- **Spring Data JPA** - Database operations
-- **MySQL** - Database
-- **JWT (JJWT)** - Token-based authentication
-- **iText7** - PDF generation
-- **Lombok** - Code generation
-- **Maven** - Build tool
-
-### **Frontend Technologies**
-- **React 18** - UI library
-- **Vite** - Build tool & dev server
-- **Tailwind CSS** - Styling framework
-- **React Router** - Client-side routing
-- **React Query** - Server state management
-- **React Hook Form** - Form handling
-- **Axios** - HTTP client
-- **Lucide React** - Icons
-- **React Hot Toast** - Notifications
 
 ## 📊 Database Schema
 
@@ -425,25 +455,7 @@ server: {
 - **File Upload Security** - Type and size validation
 - **SQL Injection Prevention** - JPA parameterized queries
 
-## 🚀 Deployment
 
-### **Backend Deployment**
-```bash
-# Build JAR file
-mvn clean package
-
-# Run production
-java -jar target/ecomapi-0.0.1-SNAPSHOT.jar
-```
-
-### **Frontend Deployment**
-```bash
-# Build for production
-npm run build
-
-# Serve static files
-npm run preview
-```
 
 ## 🔮 Future Enhancements
 
@@ -471,13 +483,7 @@ npm run preview
 - **Database Optimization** - Indexing, query optimization
 - **CDN Integration** - Static asset delivery
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📄 License
 
@@ -488,12 +494,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Backend Development** - Spring Boot, MySQL, Security
 - **Frontend Development** - React, Tailwind CSS, State Management
 - **UI/UX Design** - Responsive design, User experience
-- **DevOps** - Deployment, Configuration, Optimization
 
-## 📞 Support
 
-For support, email [support@ecomstore.com](mailto:support@ecomstore.com) or join our Slack channel.
 
----
 
-**Built with ❤️ using Spring Boot & React**
+## **Built with ❤️ using Spring Boot & React**
