@@ -1,4 +1,4 @@
-# 🛒 EcomStore - Full-Stack E-commerce Application
+# 🛒 Quikart - Full-Stack E-commerce Application
 
 A robust e-commerce platform with a **Spring Boot** backend and **React + Vite** frontend. Features include role-based authentication, product management, shopping cart, order processing, payment integration, and India-specific enhancements.
 
