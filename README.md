@@ -324,7 +324,7 @@ DELETE /api/categories/category/{id}/delete   # Delete category (Admin)
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
-cd Simple-Ecommerce-APP/backend/ecomapi
+cd Quikart/backend/ecomapi
 ```
 
 2. **Configure Database**
